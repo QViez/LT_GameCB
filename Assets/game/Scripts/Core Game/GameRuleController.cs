@@ -63,11 +63,11 @@ public class GameRuleController : MonoBehaviour
             isWaitingForContinue = false;
             if (endGameView != null) endGameView.HideAll();
             if (playerCannon != null) playerCannon.AddBullets(5);
-            Debug.Log("<color=green>Mua lượt thành công! Được cộng 5 viên đạn.</color>");
+            Debug.Log(" Được cộng 5 viên đạn");
         }
         else
         {
-            Debug.LogWarning("Không đủ Vàng! Đang mở bảng Shop...");
+            Debug.LogWarning("Không đủ Vàng!");
             if (panelShop != null) panelShop.SetActive(true);
         }
     }
@@ -112,8 +112,7 @@ public class GameRuleController : MonoBehaviour
         if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
     }
 
-    // ================= XỬ LÝ LOGIC LUẬT CHƠI =================
-
+    //  XỬ LÝ LOGIC LUẬT CHƠI 
     private void UpdateBulletUI(int currentAmmo)
     {
         if (bulletCountView != null) bulletCountView.UpdateAmmoText(currentAmmo);

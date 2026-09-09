@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96f598389d8c3646bb1d0a8e180872d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
-  currentCoins: 10000
+  currentCoins: 5000
 --- !u!4 &163025865
 Transform:
   m_ObjectHideFlags: 0
@@ -2395,7 +2395,7 @@ GameObject:
   - component: {fileID: 291706743}
   - component: {fileID: 291706742}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas_MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
