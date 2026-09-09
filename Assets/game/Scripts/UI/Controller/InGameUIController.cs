@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // THÊM DÒNG NÀY: Để sử dụng lệnh LoadScene
+using UnityEngine.SceneManagement;
 
 public class InGameUIController : MonoBehaviour
 {
-    [Header("--- In-Game HUD ---")]
-    public Button btnSettings;       // Kéo nút Bánh răng vào đây
-    public GameObject expandedMenu;  // Kéo cục chứa 4 nút mở rộng (SubButtons) vào đây
+    [Header("In Game HUD")]
+    public Button btnSettings;       
+    public GameObject expandedMenu;  
 
-    [Header("--- Setting In Game ---")]
+    [Header("Setting In Game")]
     public Button btnNhac;
     public Button btnLoa;
     public Button btnRung;
@@ -23,16 +23,16 @@ public class InGameUIController : MonoBehaviour
     public GameObject vibrationOff;
 
 
-    [Header("--- Quit Popup ---")]
-    public Button btnOpenQuitPopup;  // Kéo nút Thoát (màu đỏ có mũi tên) vào đây
-    public GameObject panelQuitConfirm; // Kéo Panel "Are You Sure?" vào đây
-    public Button btnCloseQuitPopup; // Kéo nút X trên popup vào đây
-    public Button btnConfirmQuit;    // Kéo nút Quit to màu đỏ vào đây
+    [Header("Quit Popup")]
+    public Button btnOpenQuitPopup;  
+    public GameObject panelQuitConfirm; 
+    public Button btnCloseQuitPopup; 
+    public Button btnConfirmQuit;    
 
-    [Header("--- Hệ thống chuyển cảnh ---")]
-    public GameObject gameplayRoot;  // Kéo cục 3D (Game Root) vào đây
-    public GameObject mainCanvasUI;  // Kéo Canvas chứa Menu tổng vào đây
-    public StringEvent onTabSelectedEvent; // Kéo file Event OnTabSelected vào đây
+    [Header("Hệ thống chuyển cảnh")]
+    public GameObject gameplayRoot;  
+    public GameObject mainCanvasUI;  
+    public StringEvent onTabSelectedEvent;
 
     private void Awake()
     {
@@ -61,7 +61,7 @@ public class InGameUIController : MonoBehaviour
         UpdateSoundInGameUI();
         UpdateVibrationInGameUI();
 
-        // 2. Logic nút mở Popup Thoát
+        // Logic nút mở Popup Thoát
         if (btnOpenQuitPopup != null)
         {
             btnOpenQuitPopup.onClick.AddListener(() =>
@@ -71,7 +71,7 @@ public class InGameUIController : MonoBehaviour
             });
         }
 
-        // 3. Logic nút X: Đóng Popup Thoát
+        // Logic nút X: Đóng Popup Thoát
         if (btnCloseQuitPopup != null)
         {
             btnCloseQuitPopup.onClick.AddListener(() =>
@@ -80,14 +80,14 @@ public class InGameUIController : MonoBehaviour
             });
         }
 
-        // 4. Logic nút QUIT: Đồng ý thoát về Home
+        // Logic nút QUIT: Đồng ý thoát về Home
         if (btnConfirmQuit != null)
         {
             btnConfirmQuit.onClick.AddListener(QuitToHome);
         }
     }
 
-    // THÊM HÀM NÀY: Chạy mỗi khi màn hình InGame bật lên để dọn dẹp các Panel kẹt
+    // Chạy mỗi khi màn hình InGame bật lên để dọn dẹp các Panel kẹt
     private void OnEnable()
     {
         if (expandedMenu != null) expandedMenu.SetActive(false);
