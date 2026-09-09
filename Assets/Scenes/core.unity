@@ -1358,6 +1358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 185547740}
   - component: {fileID: 185547739}
+  - component: {fileID: 185547743}
   - component: {fileID: 185547741}
   - component: {fileID: 185547742}
   m_Layer: 0
@@ -1380,11 +1381,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameRuleController
   playerCannon: {fileID: 1143968777}
-  playPanelController: {fileID: 868459805}
   endGameView: {fileID: 1642619089}
   bulletCountView: {fileID: 102735156}
   panelMoreLives: {fileID: 973537490}
-  PopupShop: {fileID: 2003768460}
+  panelShop: {fileID: 2003768460}
   continuePrice: 900
 --- !u!4 &185547740
 Transform:
@@ -1429,6 +1429,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PreBoosterManager
   playerCannon: {fileID: 1143968777}
   bombBoosterSO: {fileID: 11400000, guid: a639442e034cbe64bb3e86af1bff8620, type: 2}
+--- !u!114 &185547743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185547738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5c3ef30cfd79b498e082e818848397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playPanelController: {fileID: 868459805}
 --- !u!1 &190256468
 GameObject:
   m_ObjectHideFlags: 0
@@ -7510,7 +7523,7 @@ GameObject:
   - component: {fileID: 786019273}
   - component: {fileID: 786019272}
   m_Layer: 6
-  m_Name: ground
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8213,7 +8226,7 @@ GameObject:
   - component: {fileID: 841953077}
   - component: {fileID: 841953076}
   m_Layer: 0
-  m_Name: wall
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12029,7 +12042,7 @@ GameObject:
   - component: {fileID: 1143968776}
   - component: {fileID: 1143968777}
   m_Layer: 0
-  m_Name: main_cannon
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16077,7 +16090,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632951304}
   m_Layer: 0
-  m_Name: LOADING
+  m_Name: Loading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19540,7 +19553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2015578613}
   m_Layer: 0
-  m_Name: BACKGROUND
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20524,44 +20537,64 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2274177957866512583, guid: ec543be229864a14784ad6c4b846012c, type: 3}
       propertyPath: m_Name
-      value: bulletpool
+      value: Bulletpool
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
       propertyPath: prewarmItems.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
-      propertyPath: prewarmItems.Array.data[1].name
+      propertyPath: prewarmItems.Array.data[0].name
       value: vfx_icecube
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
-      propertyPath: prewarmItems.Array.data[2].name
+      propertyPath: prewarmItems.Array.data[1].name
       value: vfx_icecube premeum
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
-      propertyPath: prewarmItems.Array.data[3].name
+      propertyPath: prewarmItems.Array.data[2].name
       value: tincan
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
+      propertyPath: prewarmItems.Array.data[3].name
+      value: ice vfx
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
       propertyPath: prewarmItems.Array.data[4].name
       value: ice vfx
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
-      propertyPath: prewarmItems.Array.data[1].prefab
+      propertyPath: prewarmItems.Array.data[5].name
+      value: ice vfx
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
+      propertyPath: prewarmItems.Array.data[0].prefab
       value: 
       objectReference: {fileID: 3932390020510352518, guid: 20fcfe8cfdebbdd499d3e4ac2a766832, type: 3}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
-      propertyPath: prewarmItems.Array.data[2].prefab
+      propertyPath: prewarmItems.Array.data[1].prefab
       value: 
       objectReference: {fileID: 8635548836417056137, guid: 4df356ce22e54fe4a94ee398c029ef9f, type: 3}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
-      propertyPath: prewarmItems.Array.data[3].prefab
+      propertyPath: prewarmItems.Array.data[2].prefab
       value: 
       objectReference: {fileID: 6134530204349333069, guid: 914beaa54bec9f549b79fca72fa52fba, type: 3}
+    - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
+      propertyPath: prewarmItems.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 1542304094815288595, guid: e324c783d8d79f84eb0d60c945c81784, type: 3}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
       propertyPath: prewarmItems.Array.data[4].prefab
       value: 
       objectReference: {fileID: 1542304094815288595, guid: e324c783d8d79f84eb0d60c945c81784, type: 3}
+    - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
+      propertyPath: prewarmItems.Array.data[5].prefab
+      value: 
+      objectReference: {fileID: 1542304094815288595, guid: e324c783d8d79f84eb0d60c945c81784, type: 3}
+    - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
+      propertyPath: prewarmItems.Array.data[0].initialSize
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
       propertyPath: prewarmItems.Array.data[1].initialSize
       value: 100
@@ -20576,6 +20609,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
       propertyPath: prewarmItems.Array.data[4].initialSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
+      propertyPath: prewarmItems.Array.data[5].initialSize
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
@@ -20596,6 +20633,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
       propertyPath: prewarmItems.Array.data[4].autoReturnDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501936547929069696, guid: ec543be229864a14784ad6c4b846012c, type: 3}
+      propertyPath: prewarmItems.Array.data[5].autoReturnDelay
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6824615391337300743, guid: ec543be229864a14784ad6c4b846012c, type: 3}

@@ -1,9 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
-using UnityEngine.SceneManagement;
-using DG.Tweening;
 
 public class GameRuleController : MonoBehaviour
 {
@@ -11,56 +7,28 @@ public class GameRuleController : MonoBehaviour
 
     [Header("Liên kết Hệ thống")]
     public SimpleCannon playerCannon;
-    public PlayPanelController playPanelController;
 
-    [Header("Giao diện UI")]
+    [Header("Giao diện UI (Views)")]
     public EndGameView endGameView;
     public BulletCountView bulletCountView;
+
+    [Header("Cài đặt Cứu trợ & Mua sắm")]
     public GameObject panelMoreLives;
-    public GameObject PopupShop;        
-    public int continuePrice = 900;     
+    public GameObject panelShop;       
+    public int continuePrice = 900;    
 
     private int activeBlocks = 0;
     private int activeBulletsFlying = 0;
     private bool isGameOver = false;
     private bool isWaitingForContinue = false;
-    private static bool hasShownSplash = false;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
-
-        if (playPanelController != null)
-        {
-            if (PlayerPrefs.GetInt("AutoStartGame", 0) == 1)
-            {
-                if (playPanelController.canvasUI != null) playPanelController.canvasUI.SetActive(false);
-                if (playPanelController.loadingView != null)
-                {
-                    playPanelController.loadingView.gameObject.SetActive(true);
-                    CanvasGroup cg = playPanelController.loadingView.GetComponent<CanvasGroup>();
-                    if (cg != null) cg.alpha = 1f;
-                }
-            }
-            else
-            {
-                if (playPanelController.gameplayRoot != null) playPanelController.gameplayRoot.SetActive(false);
-                if (playPanelController.canvasInGame != null) playPanelController.canvasInGame.SetActive(false);
-                if (playPanelController.canvasUI != null) playPanelController.canvasUI.SetActive(true);
-                if (playPanelController.loadingView != null) playPanelController.loadingView.gameObject.SetActive(false);
-            }
-        }
     }
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("AutoStartGame", 0) == 1)
-        {
-            PlayerPrefs.SetInt("AutoStartGame", 0);
-            PlayerPrefs.Save();
-            StartCoroutine(DirectToGameRoutine());
-        }
-
         if (playerCannon != null)
         {
             playerCannon.OnAmmoChanged += UpdateBulletUI;
@@ -73,40 +41,6 @@ public class GameRuleController : MonoBehaviour
             endGameView.OnHomeClicked += HandleReturnToHome;
             endGameView.OnPlayOnClicked += HandlePlayOn;
             endGameView.OnContinueCloseClicked += HandleContinueClose;
-        }
-    }
-
-    private IEnumerator DirectToGameRoutine()
-    {
-        if (playPanelController != null)
-        {
-            if (playPanelController.gameplayRoot != null) playPanelController.gameplayRoot.SetActive(true);
-            if (playPanelController.canvasInGame != null) playPanelController.canvasInGame.SetActive(true);
-            yield return new WaitForSeconds(0.1f);
-
-            // 🔥 GỌI PRE-BOOSTER MANAGER TỪ ĐÂY 🔥
-            if (PreBoosterManager.Instance != null)
-            {
-                PreBoosterManager.Instance.ApplyPreBoosters();
-            }
-
-            if (playPanelController.loadingView != null)
-            {
-                CanvasGroup cg = playPanelController.loadingView.GetComponent<CanvasGroup>();
-                if (cg != null)
-                {
-                    float fadeDuration = 0.2f;
-                    float elapsed = 0f;
-                    while (elapsed < fadeDuration)
-                    {
-                        elapsed += Time.deltaTime;
-                        cg.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
-                        yield return null;
-                    }
-                    cg.alpha = 0f;
-                }
-                playPanelController.loadingView.gameObject.SetActive(false);
-            }
         }
     }
 
@@ -124,7 +58,6 @@ public class GameRuleController : MonoBehaviour
 
     private void HandlePlayOn()
     {
-        // Yêu cầu Thủ quỹ kiểm tra và trừ tiền
         if (CurrencyManager.Instance != null && CurrencyManager.Instance.TrySpendCoins(continuePrice))
         {
             isWaitingForContinue = false;
@@ -135,7 +68,7 @@ public class GameRuleController : MonoBehaviour
         else
         {
             Debug.LogWarning("Không đủ Vàng! Đang mở bảng Shop...");
-            if (PopupShop != null) PopupShop.SetActive(true);
+            if (panelShop != null) panelShop.SetActive(true);
         }
     }
 
@@ -156,18 +89,30 @@ public class GameRuleController : MonoBehaviour
         }
 
         if (endGameView != null) endGameView.HideAll();
-        PlayerPrefs.SetInt("AutoStartGame", 1);
-        PlayerPrefs.Save();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Nhờ SceneFlowManager chuyển cảnh
+        if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(true);
     }
 
     private void HandleReturnToHome()
     {
         if (endGameView != null) endGameView.HideAll();
-        PlayerPrefs.SetInt("AutoStartGame", 0);
-        PlayerPrefs.Save();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Nhờ SceneFlowManager chuyển cảnh
+        if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
     }
+
+    public void QuitGameAndLoseLife()
+    {
+        isGameOver = true;
+        isWaitingForContinue = false;
+
+        if (LivesManager.Instance != null) LivesManager.Instance.LoseLife();
+        if (endGameView != null) endGameView.HideAll();
+
+        // Nhờ SceneFlowManager chuyển cảnh
+        if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
+    }
+
+    // ================= XỬ LÝ LOGIC LUẬT CHƠI =================
 
     private void UpdateBulletUI(int currentAmmo)
     {
@@ -219,10 +164,10 @@ public class GameRuleController : MonoBehaviour
             yield break;
         }
 
-        if (playerCannon.GetCurrentBullets() <= 0 && activeBulletsFlying <= 0)
+        if (playerCannon != null && playerCannon.GetCurrentBullets() <= 0 && activeBulletsFlying <= 0)
         {
             float waitTimer = 0f;
-            while (waitTimer < 1.0f)
+            while (waitTimer < 0.1f)
             {
                 if (activeBlocks <= 0)
                 {
@@ -246,7 +191,7 @@ public class GameRuleController : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
         if (endGameView != null) endGameView.ShowWin();
-        StartCoroutine(AutoReturnToHomeRoutine(2f));
+        StartCoroutine(AutoReturnToHomeRoutine(1.5f));
     }
 
     private IEnumerator AutoReturnToHomeRoutine(float waitTime)
@@ -254,27 +199,8 @@ public class GameRuleController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         int currentLevel = PlayerPrefs.GetInt("CURRENT_LEVEL_INDEX", 1);
         PlayerPrefs.SetInt("CURRENT_LEVEL_INDEX", currentLevel + 1);
-        PlayerPrefs.SetInt("AutoStartGame", 0);
-        PlayerPrefs.Save();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
 
-    // XỬ LÝ BỎ CUỘC (QUIT GAME)
-    public void QuitGameAndLoseLife()
-    {
-        isGameOver = true;
-        isWaitingForContinue = false;
-
-        if (LivesManager.Instance != null)
-        {
-            LivesManager.Instance.LoseLife();
-            Debug.Log("Bỏ cuộc giữa chừng -> Đã trừ 1 mạng!");
-        }
-
-        if (endGameView != null) endGameView.HideAll();
-
-        PlayerPrefs.SetInt("AutoStartGame", 0);
-        PlayerPrefs.Save();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Nhờ SceneFlowManager chuyển cảnh
+        if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
     }
 }
