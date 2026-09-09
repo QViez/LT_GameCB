@@ -59,13 +59,6 @@ public class SceneFlowManager : MonoBehaviour
     private IEnumerator FadeOutLoadingRoutine()
     {
         yield return new WaitForSeconds(0.1f); // Đợi vật lý khởi tạo
-
-        // GỌI PRE-BOOSTER MANAGER
-        if (PreBoosterManager.Instance != null)
-        {
-            PreBoosterManager.Instance.ApplyPreBoosters();
-        }
-
         // Fade mờ cái rèm đen
         if (playPanelController != null && playPanelController.loadingView != null)
         {

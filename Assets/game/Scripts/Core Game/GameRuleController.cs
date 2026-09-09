@@ -191,16 +191,18 @@ public class GameRuleController : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
         if (endGameView != null) endGameView.ShowWin();
-        StartCoroutine(AutoReturnToHomeRoutine(1.5f));
+        StartCoroutine(AutoGoToNextLevelRoutine(1.5f));
     }
 
-    private IEnumerator AutoReturnToHomeRoutine(float waitTime)
+    private IEnumerator AutoGoToNextLevelRoutine(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+
         int currentLevel = PlayerPrefs.GetInt("CURRENT_LEVEL_INDEX", 1);
         PlayerPrefs.SetInt("CURRENT_LEVEL_INDEX", currentLevel + 1);
+        PlayerPrefs.Save();
 
         // Nhờ SceneFlowManager chuyển cảnh
-        if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
+        if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(true);
     }
 }
