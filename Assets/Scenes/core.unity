@@ -10904,7 +10904,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 1c81f07e9e5b7e24380a01fe411d4fda, type: 3}
+  m_Resource: {fileID: 8300000, guid: d10ec80540b580c47a10dd33dd1ce97a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14924,7 +14924,7 @@ MonoBehaviour:
   soundSource: {fileID: 1696577396}
   CannonSource: {fileID: 1073138801}
   buttonClickClip: {fileID: 8300000, guid: 6d3be6367fa0a9342bf27a1a157a53ac, type: 3}
-  cannonShotClip: {fileID: 8300000, guid: 1c81f07e9e5b7e24380a01fe411d4fda, type: 3}
+  cannonShotClip: {fileID: 8300000, guid: d10ec80540b580c47a10dd33dd1ce97a, type: 3}
 --- !u!1 &1510749682
 GameObject:
   m_ObjectHideFlags: 0
