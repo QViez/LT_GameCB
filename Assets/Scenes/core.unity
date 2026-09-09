@@ -12412,7 +12412,7 @@ Transform:
   m_GameObject: {fileID: 1143968775}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -7.9}
+  m_LocalPosition: {x: 0, y: 1, z: -8.201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12435,7 +12435,7 @@ MonoBehaviour:
   firePoint: {fileID: 1369267417}
   cannonBasePoint: {fileID: 1732224717}
   bulletSpeed: 36
-  raycastDistance: 20
+  raycastDistance: 100
   maxBullets: 30
   normalBulletScaleMultiplier: 1
   muzzleVFXPrefab: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
