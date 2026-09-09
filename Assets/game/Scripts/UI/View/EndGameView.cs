@@ -9,7 +9,7 @@ public class EndGameView : MonoBehaviour
     public GameObject losePanel;
     public GameObject continuePanel;
 
-    [Header("Nút Bấm (Kéo thả nút vào đây)")]
+    [Header("Nút Bấm ")]
     public Button btnTryAgain;
     public Button btnHome;
     public Button btnPlayOn;         
