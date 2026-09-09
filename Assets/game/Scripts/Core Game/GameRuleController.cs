@@ -13,12 +13,12 @@ public class GameRuleController : MonoBehaviour
     public SimpleCannon playerCannon;
     public PlayPanelController playPanelController;
 
-    [Header("Giao diện UI (Views)")]
+    [Header("Giao diện UI")]
     public EndGameView endGameView;
     public BulletCountView bulletCountView;
     public GameObject panelMoreLives;
-    public GameObject PopupShop;        // Mở shop khi thiếu tiền mua đạn
-    public int continuePrice = 900;     // Giá mua thêm lượt (Play On)
+    public GameObject PopupShop;        
+    public int continuePrice = 900;     
 
     private int activeBlocks = 0;
     private int activeBulletsFlying = 0;
@@ -127,7 +127,6 @@ public class GameRuleController : MonoBehaviour
         // Yêu cầu Thủ quỹ kiểm tra và trừ tiền
         if (CurrencyManager.Instance != null && CurrencyManager.Instance.TrySpendCoins(continuePrice))
         {
-            // Trừ thành công -> Tắt bảng Continue và cho bắn tiếp
             isWaitingForContinue = false;
             if (endGameView != null) endGameView.HideAll();
             if (playerCannon != null) playerCannon.AddBullets(5);
@@ -135,7 +134,6 @@ public class GameRuleController : MonoBehaviour
         }
         else
         {
-            // Trừ thất bại (Không đủ vàng) -> Mở bảng Shop
             Debug.LogWarning("Không đủ Vàng! Đang mở bảng Shop...");
             if (PopupShop != null) PopupShop.SetActive(true);
         }
@@ -261,24 +259,20 @@ public class GameRuleController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // ================= XỬ LÝ BỎ CUỘC (QUIT GAME) =================
+    // XỬ LÝ BỎ CUỘC (QUIT GAME)
     public void QuitGameAndLoseLife()
     {
-        // 1. Khóa Trọng tài lại, không cho phán xét thắng thua nữa
         isGameOver = true;
         isWaitingForContinue = false;
 
-        // 2. Giao tiếp với Model: Phạt trừ 1 mạng!
         if (LivesManager.Instance != null)
         {
             LivesManager.Instance.LoseLife();
             Debug.Log("Bỏ cuộc giữa chừng -> Đã trừ 1 mạng!");
         }
 
-        // 3. Giao tiếp với View: Giấu hết các bảng đi
         if (endGameView != null) endGameView.HideAll();
 
-        // 4. Load lại cảnh để ra Home
         PlayerPrefs.SetInt("AutoStartGame", 0);
         PlayerPrefs.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

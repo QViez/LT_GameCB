@@ -28,7 +28,6 @@ public class Block : MonoBehaviour
             GameRuleController.Instance.RegisterBlock(this);
         }
     }
-    // --------------------------------------------------------
 
     private void OnEnable()
     {
@@ -53,7 +52,7 @@ public class Block : MonoBehaviour
                     contact.point,
                     Quaternion.LookRotation(contact.normal)
                 );
-                SimpleBulletPool.Instance.ReturnToPool(data.vfxPrefab, data.vfxPrefab); // Trả VFX về Pool sau khi phát xong (nếu muốn tái sử dụng)
+                SimpleBulletPool.Instance.ReturnToPool(data.vfxPrefab, data.vfxPrefab);
             }
 
             // 2. Bắn sự kiện ra ngoài (nếu Spawner/Manager đang đăng ký lắng nghe)

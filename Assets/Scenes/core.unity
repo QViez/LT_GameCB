@@ -16196,9 +16196,9 @@ RectTransform:
   - {fileID: 1624653817}
   - {fileID: 740859595}
   - {fileID: 796445704}
-  - {fileID: 973537491}
   - {fileID: 817585725}
   - {fileID: 1285692653}
+  - {fileID: 973537491}
   - {fileID: 1053302760}
   - {fileID: 2003768465}
   m_Father: {fileID: 1584891406}
@@ -19501,7 +19501,6 @@ MonoBehaviour:
   shopBoosterList:
   - {fileID: 11400000, guid: c4e83f45881dbb44ebb8072605218c48, type: 2}
   - {fileID: 11400000, guid: 68d8d46f1d7d517498262d824e677b34, type: 2}
-  - {fileID: 11400000, guid: a639442e034cbe64bb3e86af1bff8620, type: 2}
 --- !u!222 &2003768464
 CanvasRenderer:
   m_ObjectHideFlags: 0

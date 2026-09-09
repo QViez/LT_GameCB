@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Settings")]
     [SerializeField] private float lifeTime = 4f;
     [SerializeField] private float timeAfterCollision = 1.5f;
-    [SerializeField] private float gravityDelay = 0.5f; // Thời gian delay trước khi bật gravity khi mới bắn
+    [SerializeField] private float gravityDelay = 0.5f; 
 
     private Rigidbody rb;
     private Coroutine returnCoroutine;
