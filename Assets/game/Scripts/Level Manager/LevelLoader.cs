@@ -34,22 +34,22 @@ public class LevelLoader : MonoBehaviour
             return;
         }
 
-        // 1. Dọn dẹp Level cũ
+        //Dọn dẹp Level cũ
         ClearCurrentLevel();
 
-        // 2. Đồng bộ đạn cho SimpleCannon (Ép súng gốc nhận số đạn từ JSON)
+        //Đồng bộ đạn cho SimpleCannon 
         if (cannon != null)
         {
             cannon.SetMaxBullets(data.MaxBullets);
         }
 
-        // 3. Sinh ra các Block Prefab từ Database
+        //Sinh ra các Block Prefab từ Database
         foreach (BlockData bData in data.blocks)
         {
             GameObject prefab = blockLevelDatabase != null ? blockLevelDatabase.GetPrefabByName(bData.prefabName) : null;
             if (prefab != null)
             {
-                // 🔥 CHỐT CHẶN BẢO VỆ: Quét xem "cục gạch" này có phải là súng không?
+                //Quét xem "cục gạch" này có phải là súng không?
                 if (prefab.GetComponent<SimpleCannon>() != null)
                 {
                     Debug.LogWarning("🚨 Phát hiện JSON chứa Súng! Đã chặn đứng hành vi đẻ thêm súng Clone!");

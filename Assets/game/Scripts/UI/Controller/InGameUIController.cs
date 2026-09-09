@@ -36,7 +36,6 @@ public class InGameUIController : MonoBehaviour
 
     private void Awake()
     {
-        // 1. Logic nút Cài đặt: Bật/tắt danh sách nút mở rộng
         if (btnSettings != null)
         {
             btnSettings.onClick.AddListener(() =>
@@ -45,34 +44,27 @@ public class InGameUIController : MonoBehaviour
             });
         }
 
-
-        // ================= SETTING IN GAME =================
-
-        // Music
         btnNhac.onClick.AddListener(ToggleMusicInGame);
 
-        // Sound
         btnLoa.onClick.AddListener(ToggleSoundInGame);
 
-        // Vibration
         btnRung.onClick.AddListener(ToggleVibrationInGame);
 
         UpdateMusicInGameUI();
         UpdateSoundInGameUI();
         UpdateVibrationInGameUI();
 
-        // Logic nút mở Popup Thoát
+
         if (btnOpenQuitPopup != null)
         {
             btnOpenQuitPopup.onClick.AddListener(() =>
             {
                 panelQuitConfirm.SetActive(true);
-                expandedMenu.SetActive(false); // Ẩn danh sách nút đi cho gọn
+                expandedMenu.SetActive(false); 
             });
         }
 
-        // Logic nút X: Đóng Popup Thoát
-        if (btnCloseQuitPopup != null)
+           if (btnCloseQuitPopup != null)
         {
             btnCloseQuitPopup.onClick.AddListener(() =>
             {
@@ -80,14 +72,13 @@ public class InGameUIController : MonoBehaviour
             });
         }
 
-        // Logic nút QUIT: Đồng ý thoát về Home
         if (btnConfirmQuit != null)
         {
             btnConfirmQuit.onClick.AddListener(QuitToHome);
         }
     }
 
-    // Chạy mỗi khi màn hình InGame bật lên để dọn dẹp các Panel kẹt
+
     private void OnEnable()
     {
         if (expandedMenu != null) expandedMenu.SetActive(false);
@@ -96,7 +87,6 @@ public class InGameUIController : MonoBehaviour
 
     private void QuitToHome()
     {
-        // Thay vì chỉ tắt UI, ta load lại toàn bộ Scene để dọn sạch rác 3D (đạn, gạch vỡ...)
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     private void UpdateMusicInGameUI()
@@ -125,8 +115,7 @@ public class InGameUIController : MonoBehaviour
     }
 
 
-    // ================= MUSIC =================
-    private void ToggleMusicInGame()
+      private void ToggleMusicInGame()
     {
         bool musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
 
@@ -142,8 +131,6 @@ public class InGameUIController : MonoBehaviour
         UpdateMusicInGameUI();
     }
 
-
-    // ================= SOUND =================
     private void ToggleSoundInGame()
     {
         bool soundOnState =
@@ -162,26 +149,21 @@ public class InGameUIController : MonoBehaviour
         {
             if (soundOnState)
             {
-                // Bật sound
+
                 AudioManager.Instance.SetSound(true);
 
-                // Bấm bật Sound thì có tiếng
                 AudioManager.Instance.PlayButtonClick();
             }
             else
             {
-                // Tắt Sound
-                // lần bấm này không kêu
+   
                 AudioManager.Instance.SetSound(false);
             }
         }
 
-        // Cập nhật hình ON/OFF
         UpdateSoundInGameUI();
     }
 
-
-    // ================= VIBRATION =================
     private void ToggleVibrationInGame()
     {
         bool vibrationOnState =
@@ -196,10 +178,8 @@ public class InGameUIController : MonoBehaviour
 
         PlayerPrefs.Save();
 
-        // Cập nhật hình ON/OFF
         UpdateVibrationInGameUI();
 
-        // Nếu vừa bật vibration thì rung thử
         if (vibrationOnState)
         {
 #if UNITY_ANDROID || UNITY_IOS

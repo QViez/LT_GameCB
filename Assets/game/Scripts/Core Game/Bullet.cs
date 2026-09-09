@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour
     private Coroutine gravityCoroutine;
     private bool hasCollided = false;
 
-    // Delegate để ObjectPool đăng ký lắng nghe
     public Action<GameObject> OnRelease;
 
     private void Awake()

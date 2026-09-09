@@ -15,10 +15,10 @@ public class SimpleBulletPool : MonoBehaviour
         public float autoReturnDelay = 1.5f; 
     }
 
-    [Header("1. Danh sách Prefab nạp sẵn ")]
+    [Header("Danh sách Prefab ")]
     [SerializeField] private List<PoolItem> prewarmItems = new List<PoolItem>();
 
-    [Header("2. Đạn mặc định ")]
+    [Header("Đạn mặc định ")]
     [SerializeField] private GameObject defaultBulletPrefab;
     [SerializeField] private int bulletSize = 30;
 

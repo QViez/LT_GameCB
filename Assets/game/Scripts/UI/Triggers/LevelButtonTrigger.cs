@@ -9,7 +9,7 @@ public class LevelButtonTrigger : MonoBehaviour
     public TextMeshProUGUI levelTextUI;
 
     [Header("Bảng Mua Mạng")]
-    public GameObject panelMoreLives; // Kéo Panle_MoreLives vào đây
+    public GameObject panelMoreLives; 
 
     private Button myButton;
 
@@ -30,14 +30,12 @@ public class LevelButtonTrigger : MonoBehaviour
 
     private void OnLevelButtonClicked()
     {
-        // KIỂM TRA MẠNG: Hết mạng thì cấm chơi, bật bảng MoreLives lên
+
         if (LivesManager.Instance != null && LivesManager.Instance.GetCurrentLives() <= 0)
         {
             if (panelMoreLives != null) panelMoreLives.SetActive(true);
-            return; // Dừng luôn, không cho mở bảng Play
+            return; 
         }
-
-        // Còn mạng thì chơi bình thường
         if (playController != null) playController.OpenPopup();
     }
 }

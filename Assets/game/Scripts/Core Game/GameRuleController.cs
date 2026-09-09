@@ -8,11 +8,11 @@ public class GameRuleController : MonoBehaviour
     [Header("Liên kết Hệ thống")]
     public SimpleCannon playerCannon;
 
-    [Header("Giao diện UI (Views)")]
+    [Header("Giao diện UI")]
     public EndGameView endGameView;
     public BulletCountView bulletCountView;
 
-    [Header("Cài đặt Cứu trợ & Mua sắm")]
+    [Header("Cài đặt Popup")]
     public GameObject panelMoreLives;
     public GameObject panelShop;       
     public int continuePrice = 900;    
@@ -89,14 +89,12 @@ public class GameRuleController : MonoBehaviour
         }
 
         if (endGameView != null) endGameView.HideAll();
-        // Nhờ SceneFlowManager chuyển cảnh
         if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(true);
     }
 
     private void HandleReturnToHome()
     {
         if (endGameView != null) endGameView.HideAll();
-        // Nhờ SceneFlowManager chuyển cảnh
         if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
     }
 
@@ -108,7 +106,7 @@ public class GameRuleController : MonoBehaviour
         if (LivesManager.Instance != null) LivesManager.Instance.LoseLife();
         if (endGameView != null) endGameView.HideAll();
 
-        // Nhờ SceneFlowManager chuyển cảnh
+
         if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
     }
 
@@ -201,7 +199,6 @@ public class GameRuleController : MonoBehaviour
         PlayerPrefs.SetInt("CURRENT_LEVEL_INDEX", currentLevel + 1);
         PlayerPrefs.Save();
 
-        // Nhờ SceneFlowManager chuyển cảnh
         if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(true);
     }
 }

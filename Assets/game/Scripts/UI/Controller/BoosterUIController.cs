@@ -8,12 +8,12 @@ public class BoosterUIController : MonoBehaviour
     [SerializeField] private BoosterSO bigBulletSO;
     [SerializeField] private BoosterSO infiniteAmmoSO;
 
-    [Header("UI - Big Bullet (Nút Trái)")]
+    [Header("Big Bullet")]
     [SerializeField] private Button btnBigBullet;
     [SerializeField] private TextMeshProUGUI txtBigBulletCount;
     [SerializeField] private GameObject addIconBigBullet;
 
-    [Header("UI - Infinite Ammo (Nút Phải)")]
+    [Header("Infinite Ammo")]
     [SerializeField] private Button btnInfiniteAmmo;
     [SerializeField] private TextMeshProUGUI txtInfiniteAmmoCount;
     [SerializeField] private GameObject addIconInfiniteAmmo;

@@ -20,12 +20,10 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton
         if (Instance == null)
         {
             Instance = this;
 
-            // Giữ AudioManager khi chuyển Scene
             DontDestroyOnLoad(gameObject);
         }
         else
