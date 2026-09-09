@@ -7,8 +7,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Sources")]
     public AudioSource musicSource;   
-    public AudioSource soundSource;   
-    public AudioSource CannonSource;  
+    public AudioSource soundSource;    
 
     [Header("Button Sound")]
     public AudioClip buttonClickClip; 
