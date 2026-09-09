@@ -57,8 +57,6 @@ public class SimpleBulletPool : MonoBehaviour
         foreach (var item in prewarmItems)
         {
             if (item.prefab == null) continue;
-
-            // Lưu cấu hình thời gian hủy của Prefab này
             if (!autoReturnTimes.ContainsKey(item.prefab))
             {
                 autoReturnTimes.Add(item.prefab, item.autoReturnDelay);
@@ -100,8 +98,7 @@ public class SimpleBulletPool : MonoBehaviour
         return obj;
     }
 
-    // Spawn Object.Nếu không truyền autoReturnDelay, Pool sẽ tự lấy thời gian cấu hình ở Inspector.
- 
+
     public GameObject Spawn(GameObject prefab, Vector3 position, Quaternion rotation, float overrideDelay = -1f)
     {
         if (prefab == null) return null;
@@ -133,7 +130,6 @@ public class SimpleBulletPool : MonoBehaviour
         obj.transform.SetParent(null);
         obj.SetActive(true);
 
-        // Xác định thời gian tự hủy
         float delay = overrideDelay;
         if (delay <= 0f && autoReturnTimes.TryGetValue(prefab, out float defaultDelay))
         {

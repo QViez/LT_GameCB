@@ -26,19 +26,15 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         hasCollided = false;
-
-        // 1. Reset vật lý khi đạn lấy ra từ Pool (BẮT BUỘC PHẢI BẬT LẠI)
         if (rb != null)
         {
             rb.useGravity = false;
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
-
-        // 2. Hẹn giờ bật gravity sau khoảng gravityDelay (Nếu đạn đang bay thẳng chưa va chạm)
         if (gravityCoroutine != null) StopCoroutine(gravityCoroutine);
         gravityCoroutine = StartCoroutine(EnableGravityRoutine(gravityDelay));
-        // 3. Đếm giờ tự thu hồi nếu bay hụt mục tiêu
+
         StartReturnTimer(lifeTime);
     }
 
@@ -62,11 +58,10 @@ public class Bullet : MonoBehaviour
             if (hasCollided) return;
         hasCollided = true;
 
-        // Bật Gravity ngay lập tức khi va chạm (hủy luôn đếm giờ gravity cũ)
+
         if (gravityCoroutine != null) StopCoroutine(gravityCoroutine);
         if (rb != null) rb.useGravity = true;
 
-        // Đổi thời gian thu hồi tính từ lúc va chạm
         StartReturnTimer(timeAfterCollision);
     }
 

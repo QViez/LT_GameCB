@@ -35,7 +35,7 @@ public class SimpleCannon : MonoBehaviour
 
     private Vector3 originalBulletScale = Vector3.one;
     private bool isScaleSaved = false;
-    private bool isAiming = false; // Theo dõi xem người chơi có đang giữ ngón tay không
+    private bool isAiming = false; 
 
     public event Action<int> OnAmmoChanged;
 
@@ -165,15 +165,6 @@ public class SimpleCannon : MonoBehaviour
         }
     }
 
-    // =====================================================
-    // UPDATE - BẮT SỰ KIỆN CHẠM/KÉO/NHẢ
-    // =====================================================
-    // =====================================================
-    // UPDATE - ĐÃ SỬA LẠI ĐỂ TƯƠNG THÍCH HOÀN HẢO VỚI SIMULATOR/MOBILE
-    // =====================================================
-    // =====================================================
-    // UPDATE - BẮT SỰ KIỆN CHẠM/KÉO/NHẢ
-    // =====================================================
     private void Update()
     {
         bool isPointerDown = false;
@@ -181,7 +172,6 @@ public class SimpleCannon : MonoBehaviour
         bool isPointerUp = false;
         Vector2 screenPosition = Vector2.zero;
 
-        // Bắt sự kiện Input
         if (Input.GetMouseButtonDown(0))
         {
             isPointerDown = true;
@@ -198,60 +188,46 @@ public class SimpleCannon : MonoBehaviour
             screenPosition = Input.mousePosition;
         }
 
-        // 1. KHI BẮT ĐẦU CHẠM VÀO MÀN HÌNH
         if (isPointerDown)
         {
-            // 🔥 GỌI HÀM BẢO VỆ Ở ĐÂY: Nếu chạm trúng Nút bấm -> Chặn luôn!
+
             if (IsPointerOverUI())
             {
-                isAiming = false; // Tắt cờ ngắm bắn
-                Debug.Log("Chạm vào UI -> Đã khóa nòng pháo!");
+                isAiming = false; 
                 return;
             }
 
-            // Nếu không chạm UI và có đạn thì cho phép ngắm
             if (currentBullets > 0 || isInfiniteAmmoActive || isBigBulletActive)
             {
                 isAiming = true;
             }
         }
 
-        // 2. KHI ĐANG KÉO TAY (NGẮM)
         if (isAiming && isPointerHeld)
         {
             Aim(screenPosition);
         }
 
-        // 3. KHI NHẢ TAY (BẮN)
         if (isAiming && isPointerUp)
         {
-            isAiming = false; // Tắt ngắm
-            ExecuteShoot();   // Bóp cò
+            isAiming = false; 
+            ExecuteShoot();   
         }
     }
 
-    // =====================================================
-    // HÀM NGẮM: CHỈ XOAY PHÁO, KHÔNG BẮN ĐẠN
-    // =====================================================
-    // =====================================================
-    // HÀM NGẮM: CHỈ XOAY PHÁO, KHÔNG BẮN ĐẠN
-    // =====================================================
     private void Aim(Vector2 screenPos)
     {
         Camera mainCam = Camera.main;
         if (mainCam == null || firePoint == null) return;
 
-        // Bắn Raycast để tìm điểm ngắm
         Ray ray = mainCam.ScreenPointToRay(screenPos);
 
-        // 🔥 THÊM LẠI LỆNH VẼ TIA LASER Ở ĐÂY (Vẽ trong 1 frame vì ngắm diễn ra liên tục)
         Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.red);
 
         Vector3 targetPoint = Physics.Raycast(ray, out RaycastHit hitInfo, raycastDistance)
             ? hitInfo.point
             : ray.GetPoint(raycastDistance);
 
-        // Tính hướng và xoay nòng pháo
         Vector3 cannonLookDirection = (targetPoint - transform.position).normalized;
 
         if (cannonLookDirection != Vector3.zero)
@@ -259,13 +235,9 @@ public class SimpleCannon : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(cannonLookDirection);
         }
     }
-
-    // =====================================================
-    // HÀM BẮN: TẠO ĐẠN BAY THEO HƯỚNG HIỆN TẠI CỦA NÒNG PHÁO
-    // =====================================================
     private void ExecuteShoot()
     {
-        // Chốt lại 1 lần nữa xem có đạn không trước khi bắn
+
         if (!(currentBullets > 0 || isInfiniteAmmoActive || isBigBulletActive)) return;
 
         bool wasBigBullet = isBigBulletActive;
@@ -275,12 +247,11 @@ public class SimpleCannon : MonoBehaviour
 
         if (bullet != null)
         {
-            // Lấy chính hướng của nòng pháo hiện tại (firePoint.forward) làm hướng bắn
+
             Vector3 shootDirection = firePoint.forward;
 
             bullet.transform.SetPositionAndRotation(firePoint.position, Quaternion.LookRotation(shootDirection));
 
-            // -- Xử lý Scale đạn --
             if (!isScaleSaved)
             {
                 originalBulletScale = bullet.transform.localScale;
@@ -303,7 +274,6 @@ public class SimpleCannon : MonoBehaviour
                 bullet.transform.localScale = baseNormalScale;
             }
 
-            // -- Xử lý Hủy đạn --
             if (bullet.TryGetComponent<Bullet>(out Bullet bulletScript))
             {
                 bulletScript.OnRelease = (go) =>
@@ -314,7 +284,6 @@ public class SimpleCannon : MonoBehaviour
                 };
             }
 
-            // -- Vật lý bay --
             if (bullet.TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
                 rb.linearVelocity = Vector3.zero;
@@ -322,7 +291,6 @@ public class SimpleCannon : MonoBehaviour
                 rb.linearVelocity = shootDirection * bulletSpeed;
             }
 
-            // -- Âm thanh & VFX --
             if (AudioManager.Instance != null) AudioManager.Instance.PlayCannonShot();
 
             if (muzzleVFXPrefab != null)
@@ -332,7 +300,7 @@ public class SimpleCannon : MonoBehaviour
             }
         }
 
-        // -- Trừ đạn sau khi bắn --
+  
         if (!isInfiniteAmmoActive && !wasBigBullet)
         {
             currentBullets--;
@@ -351,14 +319,9 @@ public class SimpleCannon : MonoBehaviour
         OnAmmoChanged?.Invoke(currentBullets);
     }
 
-    // =====================================================
-    // KIỂM TRA CHẠM UI (BẢO VỆ KÉP CHO CẢ PC LẪN MOBILE)
-    // =====================================================
     private bool IsPointerOverUI()
     {
         if (EventSystem.current == null) return false;
-
-        // 1. Kiểm tra cảm ứng (Dành cho điện thoại thật)
         if (Input.touchCount > 0)
         {
             for (int i = 0; i < Input.touchCount; i++)
@@ -368,7 +331,6 @@ public class SimpleCannon : MonoBehaviour
             }
         }
 
-        // 2. Kiểm tra chuột (Dành cho PC và Simulator)
         return EventSystem.current.IsPointerOverGameObject();
     }
 

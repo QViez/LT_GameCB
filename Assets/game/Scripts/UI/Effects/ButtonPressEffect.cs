@@ -8,8 +8,7 @@ public class ButtonPressEffect : MonoBehaviour, IPointerDownHandler, IPointerUpH
     public float pressScale = 0.9f;
     public float animationDuration = 0.1f;
 
-    [Header("Kích thước chuẩn của nút")]
-    [Tooltip("Ghim cứng kích thước ở đây để không bị lỗi với UIGroupPopper")]
+    [Header("Kích thước nút")]
     public Vector3 defaultScale = Vector3.one; 
 
     public void OnPointerDown(PointerEventData eventData)

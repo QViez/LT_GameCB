@@ -7,20 +7,19 @@ public class EndGameView : MonoBehaviour
     [Header("UI Panels")]
     public GameObject winPanel;
     public GameObject losePanel;
-    public GameObject continuePanel; // 🔥 Bảng Continue (Cứu trợ)
+    public GameObject continuePanel;
 
     [Header("Nút Bấm (Kéo thả nút vào đây)")]
     public Button btnTryAgain;
     public Button btnHome;
-    public Button btnPlayOn;         // 🔥 Nút mua 5 đạn
-    public Button btnCloseContinue;  // 🔥 Nút X của bảng Continue
+    public Button btnPlayOn;         
+    public Button btnCloseContinue;  
 
     // Cổng phát thanh sự kiện
     public event Action OnTryAgainClicked;
     public event Action OnHomeClicked;
-    public event Action OnPlayOnClicked;        // 🔥 Phát loa khi bấm Play On
-    public event Action OnContinueCloseClicked; // 🔥 Phát loa khi từ chối cứu trợ (Bấm X)
-
+    public event Action OnPlayOnClicked;        
+    public event Action OnContinueCloseClicked; 
     private void Awake()
     {
         if (btnTryAgain != null) btnTryAgain.onClick.AddListener(() => OnTryAgainClicked?.Invoke());
