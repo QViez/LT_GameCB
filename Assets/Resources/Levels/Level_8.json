@@ -1,0 +1,149 @@
+{
+    "levelName": "CustomLevel",
+    "MaxBullets": 15,
+    "blocks": [
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": 1.0,
+                "y": 1.5,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Pedestal",
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": -1.0,
+                "y": 1.5,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": 0.5,
+                "y": 1.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": 1.0,
+                "y": 2.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "CarnivalCannon",
+            "position": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": -8.350000381469727
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": -0.5,
+                "y": 1.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": -1.0,
+                "y": 2.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Minecraft Diamond Block",
+            "position": {
+                "x": -1.0,
+                "y": 1.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        }
+    ]
+}
