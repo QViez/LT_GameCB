@@ -1,13 +1,26 @@
 {
     "levelName": "CustomLevel",
-    "MaxBullets": 15,
+    "MaxBullets": 16,
     "blocks": [
         {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 1.0,
+                "y": 1.5,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
             "prefabName": "CarnivalTinCan",
             "position": {
-                "x": -0.75,
-                "y": 2.5,
-                "z": 0.75
+                "x": -0.5,
+                "y": 1.0,
+                "z": 1.5
             },
             "rotation": {
                 "x": 0.0,
@@ -16,23 +29,62 @@
             }
         },
         {
-            "prefabName": "CarnivalTinCan",
+            "prefabName": "JamJar",
             "position": {
-                "x": -1.25,
-                "y": 3.0,
-                "z": 0.75
-            },
-            "rotation": {
                 "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": -1.25,
                 "y": 2.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 0.5,
+                "y": 1.5,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 1.0,
+                "y": 2.0,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": -1.0,
+                "y": 2.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "CarnivalTinCan",
+            "position": {
+                "x": 0.0,
+                "y": 1.0,
                 "z": 1.0
             },
             "rotation": {
@@ -44,9 +96,9 @@
         {
             "prefabName": "CarnivalTinCan",
             "position": {
-                "x": -0.75,
-                "y": 3.0,
-                "z": 0.75
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             },
             "rotation": {
                 "x": 0.0,
@@ -55,11 +107,24 @@
             }
         },
         {
-            "prefabName": "Pedestal",
+            "prefabName": "JamJar",
+            "position": {
+                "x": 0.0,
+                "y": 1.5,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "CarnivalTinCan",
             "position": {
                 "x": -1.0,
                 "y": 1.0,
-                "z": 1.25
+                "z": 1.5
             },
             "rotation": {
                 "x": 0.0,
@@ -68,28 +133,41 @@
             }
         },
         {
-            "prefabName": "CarnivalTinCan",
+            "prefabName": "JamJar",
             "position": {
-                "x": 1.5,
+                "x": -0.5,
+                "y": 1.5,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": -1.0,
+                "y": 2.0,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 0.0,
                 "y": 2.5,
-                "z": 0.75
+                "z": 1.5
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "bulletpool",
-            "position": {
-                "x": 11.0,
-                "y": 0.0,
-                "z": 5.0
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
+                "y": 180.0,
                 "z": 0.0
             }
         },
@@ -97,125 +175,8 @@
             "prefabName": "CarnivalTinCan",
             "position": {
                 "x": 1.0,
-                "y": 2.0,
-                "z": 1.0
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": -1.25,
-                "y": 2.0,
-                "z": 0.5
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": 1.5,
-                "y": 2.0,
-                "z": 1.0
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": 1.5,
-                "y": 2.0,
-                "z": 0.5
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": 1.5,
-                "y": 3.0,
-                "z": 0.75
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": 1.0,
-                "y": 3.0,
-                "z": 0.75
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": 1.0,
-                "y": 2.0,
-                "z": 0.5
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "Pedestal",
-            "position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 1.25
-            },
-            "rotation": {
-                "x": 0.00004017257742816582,
-                "y": 90.00004577636719,
-                "z": 0.000039558832213515416
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": 1.0,
-                "y": 2.5,
-                "z": 0.75
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "Pedestal",
-            "position": {
-                "x": 1.25,
                 "y": 1.0,
-                "z": 1.25
+                "z": 1.5
             },
             "rotation": {
                 "x": 0.0,
@@ -224,24 +185,37 @@
             }
         },
         {
-            "prefabName": "CarnivalTinCan",
+            "prefabName": "JamJar",
             "position": {
-                "x": -0.75,
-                "y": 2.0,
-                "z": 0.5
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "prefabName": "CarnivalTinCan",
-            "position": {
-                "x": -1.25,
+                "x": -1.0,
                 "y": 2.5,
-                "z": 0.75
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 0.0,
+                "y": 2.5,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "CarnivalTinCan",
+            "position": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 1.5
             },
             "rotation": {
                 "x": 0.0,
@@ -252,13 +226,221 @@
         {
             "prefabName": "CarnivalTinCan",
             "position": {
-                "x": -0.75,
-                "y": 2.0,
+                "x": -1.0,
+                "y": 1.0,
                 "z": 1.0
             },
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 1.0,
+                "y": 1.5,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "Pedestal",
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.25
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": -1.0,
+                "y": 1.5,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "CarnivalTinCan",
+            "position": {
+                "x": 0.5,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 0.5,
+                "y": 1.5,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "CarnivalTinCan",
+            "position": {
+                "x": -0.5,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 0.0,
+                "y": 1.5,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 1.0,
+                "y": 2.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": -0.5,
+                "y": 1.5,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": -1.0,
+                "y": 1.5,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "CarnivalCannon",
+            "position": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": -8.350000381469727
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": -1.0,
+                "y": 2.5,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "CarnivalTinCan",
+            "position": {
+                "x": 0.5,
+                "y": 1.0,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 0.0,
+                "y": 2.0,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 1.0,
+                "y": 2.5,
+                "z": 1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "prefabName": "JamJar",
+            "position": {
+                "x": 1.0,
+                "y": 2.5,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
                 "z": 0.0
             }
         }
