@@ -5,9 +5,9 @@ using UnityEngine;
 public class SplashView : MonoBehaviour
 {
     [Header("UI Elements")]
-    public CanvasGroup imgSmashFest; // Chỉ còn giữ lại logo game
+    public CanvasGroup imgSmashFest; 
 
-    [Header("Cài đặt Animation")]
+    [Header("Animation")]
     public float fadeDuration = 0.5f;
 
     private CanvasGroup mainCanvasGroup;
@@ -15,8 +15,6 @@ public class SplashView : MonoBehaviour
     private void Awake()
     {
         mainCanvasGroup = GetComponent<CanvasGroup>();
-
-        // Giấu SmashFest đi lúc đầu để chuẩn bị hiệu ứng Fade In
         if (imgSmashFest != null)
         {
             imgSmashFest.alpha = 0f;
@@ -26,21 +24,15 @@ public class SplashView : MonoBehaviour
 
     public void ShowSmashFestLogo()
     {
-        // Kích hoạt hiệu ứng hiện rõ logo
         StartCoroutine(FadeInSmashFest());
     }
 
         public void HideSplash()
     {
-        // THÊM DÒNG NÀY: Dừng ngay lập tức việc Fade In logo nếu nó vẫn đang chạy
         StopAllCoroutines();
-
-        // Bắt đầu làm mờ toàn bộ tấm rèm Splash để lộ ra Menu Home phía sau
         StartCoroutine(FadeOutAndHide(mainCanvasGroup, fadeDuration));
     }
 
-
-    // --- LOGIC HIỆN LOGO ---
     private IEnumerator FadeInSmashFest()
     {
         if (imgSmashFest != null)
@@ -54,7 +46,6 @@ public class SplashView : MonoBehaviour
         {
             elapsed += Time.deltaTime;
 
-            // Tăng dần độ rõ của SmashFest
             if (imgSmashFest != null)
             {
                 imgSmashFest.alpha = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
@@ -62,7 +53,6 @@ public class SplashView : MonoBehaviour
             yield return null;
         }
 
-        // Đảm bảo SmashFest đã hiện rõ 100%
         if (imgSmashFest != null) imgSmashFest.alpha = 1f;
     }
 

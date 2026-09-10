@@ -109,8 +109,7 @@ public class GameRuleController : MonoBehaviour
 
         if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
     }
-
-    //   
+  
     private void UpdateBulletUI(int currentAmmo)
     {
         if (bulletCountView != null) bulletCountView.UpdateAmmoText(currentAmmo);
@@ -197,8 +196,10 @@ public class GameRuleController : MonoBehaviour
 
         int currentLevel = PlayerPrefs.GetInt("CURRENT_LEVEL_INDEX", 1);
         PlayerPrefs.SetInt("CURRENT_LEVEL_INDEX", currentLevel + 1);
+
+        PlayerPrefs.SetInt("AutoOpenPlayPanel", 1);
         PlayerPrefs.Save();
 
-        if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(true);
+        if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
     }
 }

@@ -23,14 +23,11 @@ public class BoosterShopManager : MonoBehaviour
 
         if (CurrencyManager.Instance == null)
         {
-            Debug.LogError("❌ Không tìm thấy CurrencyManager trong Scene!");
             return false;
         }
 
-        // Trừ coin trực tiếp bằng TrySpendCoins của CurrencyManager
         if (CurrencyManager.Instance.TrySpendCoins(booster.price))
         {
-            // Cộng số lượng Booster vào PlayerPrefs
             int currentAmount = GetBoosterCount(booster.boosterID);
             PlayerPrefs.SetInt($"BOOSTER_{booster.boosterID}", currentAmount + 1);
             PlayerPrefs.Save();
@@ -41,7 +38,7 @@ public class BoosterShopManager : MonoBehaviour
             return true;
         }
 
-        Debug.LogWarning("⚠️ Không đủ tiền trong CurrencyManager!");
+        Debug.LogWarning("Không đủ tiền ");
         return false;
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))] 
 public class EnergyButtonController : MonoBehaviour
 {
-    [Header("Bảng cần mở")]
     public GameObject panelMoreLives; 
 
     private Button myButton;
@@ -31,11 +30,8 @@ public class EnergyButtonController : MonoBehaviour
                 }
             }
             else
-            {
-                
-                Debug.Log("Đã đầy mạng");
-
-                
+            {       
+                Debug.Log("Đã đầy mạng");            
             }
         }
     }

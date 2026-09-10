@@ -8,7 +8,6 @@ public class LevelButtonTrigger : MonoBehaviour
     public PlayPanelController playController;
     public TextMeshProUGUI levelTextUI;
 
-    [Header("Bảng Mua Mạng")]
     public GameObject panelMoreLives; 
 
     private Button myButton;

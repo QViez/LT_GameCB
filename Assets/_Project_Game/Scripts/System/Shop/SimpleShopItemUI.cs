@@ -20,8 +20,6 @@ public class SimpleShopItemUI : MonoBehaviour
         {
             imgItem.sprite = boosterData.icon;
         }
-
-        // ĐÃ SỬA: boosterData.price (chữ p viết thường)
         if (txtButtonLabel != null && boosterData != null)
         {
             txtButtonLabel.text = boosterData.price.ToString();
@@ -32,8 +30,7 @@ public class SimpleShopItemUI : MonoBehaviour
             btnBuy.onClick.RemoveAllListeners();
             btnBuy.onClick.AddListener(OnBuyClicked);
         }
-    }
-
+    } 
     private void OnBuyClicked()
     {
         if (shopManager != null && boosterData != null)

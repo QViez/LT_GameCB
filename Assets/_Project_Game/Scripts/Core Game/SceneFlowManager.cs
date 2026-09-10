@@ -9,25 +9,22 @@ public class SceneFlowManager : MonoBehaviour
     [Header("Liên kết Giao diện")]
     public PlayPanelController playPanelController;
 
-    // Biến static để nhớ xem đã chiếu Splash Screen lần nào chưa
     private static bool hasShownSplash = false;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
 
-        // ================= XỬ LÝ MÀN HÌNH KHỞI ĐỘNG (SMASHFEST) =================
-        GameObject splashPanel = GameObject.Find("Panel_Splash_Startup");
+         GameObject splashPanel = GameObject.Find("Panel_Splash_Startup");
         if (!hasShownSplash)
         {
-            hasShownSplash = true; // Lần đầu mở app
+            hasShownSplash = true; 
         }
         else
         {
-            if (splashPanel != null) splashPanel.SetActive(false); // Các lần load lại ẩn đi
+            if (splashPanel != null) splashPanel.SetActive(false); 
         }
 
-        // ================= XỬ LÝ ẨN/HIỆN RÈM LOADING =================
         if (playPanelController != null)
         {
             bool autoStart = PlayerPrefs.GetInt("AutoStartGame", 0) == 1;
@@ -42,12 +39,19 @@ public class SceneFlowManager : MonoBehaviour
                 CanvasGroup cg = playPanelController.loadingView.GetComponent<CanvasGroup>();
                 if (cg != null) cg.alpha = autoStart ? 1f : 0f;
             }
+
+            if (!autoStart && PlayerPrefs.GetInt("AutoOpenPlayPanel", 0) == 1)
+            {
+                PlayerPrefs.SetInt("AutoOpenPlayPanel", 0);
+                PlayerPrefs.Save();
+
+                playPanelController.OpenPopup();
+            }
         }
     }
 
     private void Start()
     {
-        // Kéo rèm Loading ra nếu đang vào ván
         if (PlayerPrefs.GetInt("AutoStartGame", 0) == 1)
         {
             PlayerPrefs.SetInt("AutoStartGame", 0);
@@ -58,8 +62,8 @@ public class SceneFlowManager : MonoBehaviour
 
     private IEnumerator FadeOutLoadingRoutine()
     {
-        yield return new WaitForSeconds(0.1f); // Đợi vật lý khởi tạo
-        // Fade mờ cái rèm đen
+        yield return new WaitForSeconds(0.1f); 
+
         if (playPanelController != null && playPanelController.loadingView != null)
         {
             CanvasGroup cg = playPanelController.loadingView.GetComponent<CanvasGroup>();
@@ -79,7 +83,6 @@ public class SceneFlowManager : MonoBehaviour
         }
     }
 
-    // Hàm gọi để chuyển cảnh (Vào lại game hoặc Về Home)
     public void ReloadScene(bool isEnteringGame)
     {
         PlayerPrefs.SetInt("AutoStartGame", isEnteringGame ? 1 : 0);

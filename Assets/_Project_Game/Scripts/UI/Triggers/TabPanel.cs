@@ -3,11 +3,11 @@
 public class TabPanel : MonoBehaviour
 {
     [Header("Cấu hình Tab")]
-    public string myTabName; // Tên phải khớp chính xác (VD: "Home")
+    public string myTabName; 
     public StringEvent onTabSelectedEvent;
 
     [Header("Giao diện cần bật/tắt")]
-    public GameObject panelToToggle; // Kéo Panel thực tế vào đây
+    public GameObject panelToToggle; 
 
     private void OnEnable()
     {
@@ -23,7 +23,6 @@ public class TabPanel : MonoBehaviour
 
     private void HandleTabChanged(string activeTabName)
     {
-        // Điều khiển Panel được gán, KHÔNG tắt chính nó
         if (panelToToggle != null)
         {
             panelToToggle.SetActive(activeTabName == myTabName);

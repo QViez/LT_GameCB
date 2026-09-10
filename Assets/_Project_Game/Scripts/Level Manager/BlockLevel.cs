@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BlockLevel", menuName = "Game/Block Level")]
 public class BlockLevel : ScriptableObject
 {
     [SerializeField] private List<GameObject> blockPrefabs = new List<GameObject>();

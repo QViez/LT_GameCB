@@ -3,7 +3,7 @@ using TMPro;
 
 public class EnergyUIView : MonoBehaviour
 {
-    [Header("Giao Diện Chữ")]
+    [Header("Txt UI")]
     public TextMeshProUGUI txtCount;
     public TextMeshProUGUI txtTime;
 
@@ -11,7 +11,6 @@ public class EnergyUIView : MonoBehaviour
     {
         if (LivesManager.Instance != null)
         {
-            // Lắng nghe loa phát thanh từ Manager
             LivesManager.Instance.OnLivesUpdated += UpdateUI;
             LivesManager.Instance.ForceUpdateUI();
         }
