@@ -12,7 +12,7 @@ public class SimpleCannon : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform cannonBasePoint;
     [SerializeField] private float bulletSpeed = 50f;
-    [SerializeField] private float raycastDistance = 50f;
+    [SerializeField] private float raycastDistance = 20f;
 
     [Header("Ammo Settings")]
     public int maxBullets = 30;

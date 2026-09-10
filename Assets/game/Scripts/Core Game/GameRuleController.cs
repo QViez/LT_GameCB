@@ -110,7 +110,7 @@ public class GameRuleController : MonoBehaviour
         if (SceneFlowManager.Instance != null) SceneFlowManager.Instance.ReloadScene(false);
     }
 
-    //  XỬ LÝ LOGIC LUẬT CHƠI 
+    //   
     private void UpdateBulletUI(int currentAmmo)
     {
         if (bulletCountView != null) bulletCountView.UpdateAmmoText(currentAmmo);

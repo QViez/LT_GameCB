@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using TMPro; // Bắt buộc phải có để dùng TextMeshPro
+using TMPro; 
 
 public class BulletCountView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI txtCount; // Kéo object "count" vào đây
+    [SerializeField] private TextMeshProUGUI txtCount;
 
-    // Controller sẽ gọi hàm này để ra lệnh đổi chữ
     public void UpdateAmmoText(int currentAmmo)
     {
         if (txtCount != null)

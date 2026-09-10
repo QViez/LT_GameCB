@@ -4,7 +4,6 @@ using TMPro;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class AutoLevelText : MonoBehaviour
 {
-    [Tooltip("Chữ hiển thị phía trước con số. Mặc định là 'LEVEL '")]
     public string prefix = "LEVEL ";
 
     private TextMeshProUGUI myText;
