@@ -11,7 +11,6 @@ public static class LevelEditorScene
 
     private static void OnSceneGUI(SceneView sceneView)
     {
-        // Avoid opening/focusing the window if it's closed
         LevelEditorWindow[] windows = Resources.FindObjectsOfTypeAll<LevelEditorWindow>();
         if (windows == null || windows.Length == 0)
             return;
@@ -29,7 +28,6 @@ public static class LevelEditorScene
         Event e = Event.current;
         int controlID = GUIUtility.GetControlID(FocusType.Passive);
 
-        // Prevent default Unity selection when mouse clicked in scene
         if (e.type == EventType.Layout)
         {
             HandleUtility.AddDefaultControl(controlID);
@@ -45,20 +43,17 @@ public static class LevelEditorScene
             hitObject = hit.collider.gameObject;
             if (mode == LevelEditorWindow.EditMode.Place)
             {
-                // Offset by half a unit along the normal so block snaps to the outside of the hit face
                 pos = hit.point + hit.normal * 0.25f;
             }
             else
             {
-                // Target the hit object directly for erase/rotate
                 pos = hitObject.transform.position;
             }
             hasHit = true;
         }
         else if (mode == LevelEditorWindow.EditMode.Place)
         {
-            // Fallback plane at Y = 0 (only for placing blocks)
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
+               Plane plane = new Plane(Vector3.up, Vector3.zero);
             if (plane.Raycast(ray, out float enter))
             {
                 pos = ray.GetPoint(enter);
@@ -68,29 +63,24 @@ public static class LevelEditorScene
 
         if (!hasHit) return;
 
-        float snapSize = 0.5f; // setup size for block placement and snapping
+        float snapSize = 0.5f; 
 
         if (mode == LevelEditorWindow.EditMode.Place)
         {
-            float stepXZ = snapSize / 2f; // Nấc snap cho X, Z = 0.25f
+            float stepXZ = snapSize / 2f; 
 
-            // 1. Tính vị trí tâm của block mới từ ĐIỂM VA CHẠM BỀ MẶT (hit.point)
-            // Nẩy nhẹ ra ngoài bề mặt theo hướng hit.normal một khoảng bằng nửa bước snap
             Vector3 rawPos = hit.point + new Vector3(
                 hit.normal.x * (stepXZ / 2f),
                 hit.normal.y * (snapSize / 2f),
                 hit.normal.z * (stepXZ / 2f)
             );
 
-            // 2. Snap X và Z theo nấc 0.25f (0, 0.25, 0.5, 0.75, 1.0...)
             pos.x = Mathf.Round(rawPos.x / stepXZ) * stepXZ;
             pos.z = Mathf.Round(rawPos.z / stepXZ) * stepXZ;
 
-            // 3. Snap Y theo nấc 0.5f (0, 0.5, 1.0, 1.5...)
             pos.y = Mathf.Round(rawPos.y / snapSize) * snapSize;
         }
 
-        // Draw preview wire cube based on active mode
         if (mode == LevelEditorWindow.EditMode.Place)
         {
             Handles.color = Color.green;
@@ -112,7 +102,6 @@ public static class LevelEditorScene
             Handles.DrawWireCube(pos, Vector3.one * snapSize);
         }
 
-        // Repaint scene view when mouse moves to update preview position without infinite loop
         if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag)
         {
             sceneView.Repaint();
