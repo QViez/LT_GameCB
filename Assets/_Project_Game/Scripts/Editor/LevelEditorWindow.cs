@@ -43,7 +43,6 @@ public class LevelEditorWindow : EditorWindow
 
         GUILayout.Space(10);
 
-        // --- PALETTE & MODES ---
         if (currentMode == EditMode.Place)
         {
             palette = (BlockPalette)EditorGUILayout.ObjectField("Palette", palette, typeof(BlockPalette), false);
@@ -90,13 +89,11 @@ public class LevelEditorWindow : EditorWindow
             EditorGUILayout.HelpBox("Rotate Vertical Mode: Click any block in the Scene View to rotate it 90 degrees around X axis.", MessageType.Info);
         }
 
-        // --- LEVEL SETTINGS ---
         GUILayout.Space(10);
         EditorGUILayout.LabelField("LEVEL SETTINGS", EditorStyles.boldLabel);
         levelMaxBullets = EditorGUILayout.IntField("Max Ammo (Số đạn)", levelMaxBullets);
         if (levelMaxBullets < 1) levelMaxBullets = 1;
 
-        // --- SAVE / LOAD SYSTEM ---
         GUILayout.Space(15);
         EditorGUILayout.LabelField("SAVE / LOAD SYSTEM", EditorStyles.boldLabel);
 
